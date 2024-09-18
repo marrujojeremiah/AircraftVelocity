@@ -1,0 +1,28 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",  // Task name
+      "type": "shell",   // Use a shell command to invoke g++
+      "command": "/usr/bin/g++",  // Path to g++ compiler
+      "args": [
+        "-fdiagnostics-color=always",  // Enable colored error/warning messages
+        "-g",  // Include debugging information in the output binary
+        "${file}",  // Compile the current file
+        "-o",  // Output flag to specify the name of the executable
+        "${fileDirname}/${fileBasenameNoExtension}"  // Create an executable with the same name as the source file, without the .cpp extension
+      ],
+      "options": {
+        "cwd": "${fileDirname}"  // Set the current working directory to the file's directory
+      },
+      "problemMatcher": [
+        "$gcc"  // Use the GCC problem matcher to capture errors and warnings
+      ],
+      "group": {
+        "kind": "build",  // Task belongs to the build group
+        "isDefault": true  // Set this task as the default build task
+      },
+      "detail": "compiler: /usr/bin/g++"  // Additional details about the task
+    }
+  ]
+}
